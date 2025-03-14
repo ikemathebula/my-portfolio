@@ -1,6 +1,14 @@
 // App.js
 import React, { useState } from 'react';
-import { FaHome } from 'react-icons/fa';
+// Import the icons you need
+import { 
+  FaHome, 
+  FaGithub, 
+  FaEnvelope, 
+  FaLinkedin, 
+  FaYoutube, 
+  FaBloggerB 
+} from 'react-icons/fa';
 
 // Import images from the src/assets folder
 import ikeProfileImg from './assets/ike_mathebula_profile.jpg';
@@ -38,6 +46,10 @@ const navLinkStyle = {
   margin: '0 1rem',
   display: 'flex',
   alignItems: 'center',
+  background: 'none',
+  border: 'none',
+  cursor: 'pointer',
+  fontSize: '1rem',
 };
 
 // Hero section styles
@@ -180,10 +192,10 @@ const techTagStyle = {
   borderRadius: '4px',
 };
 
-// Testimonials section styles (using a warm sunset gradient)
+// Testimonials section styles (more vibrant & readable)
 const testimonialSectionStyle = {
-  background: 'linear-gradient(135deg, #f6d365, #fda085)',
-  color: '#fff',
+  background: 'linear-gradient(135deg, #ff9a9e, #fad0c4)', // new brighter gradient
+  color: '#333',               // darker text color for better contrast
   padding: '4rem 1rem',
   textAlign: 'center',
 };
@@ -198,25 +210,33 @@ const testimonialContainerStyle = {
 };
 
 const testimonialCardStyle = {
-  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  backgroundColor: 'rgba(255, 255, 255, 0.8)', // semi-opaque white background
   borderRadius: '8px',
   padding: '1.5rem',
-  maxWidth: '350px',
+  maxWidth: '400px',
   textAlign: 'left',
+  boxShadow: '0 2px 5px rgba(0, 0, 0, 0.15)', // subtle drop shadow
 };
 
 const quoteStyle = {
   fontStyle: 'italic',
   marginBottom: '1rem',
+  color: '#555',       // slightly darker text
+  fontSize: '1.1rem',  // increase font size a bit
+  lineHeight: '1.6',   // better line spacing
 };
 
 const authorStyle = {
   fontWeight: 'bold',
+  color: '#111',       // darker color for emphasis
+  fontSize: '1rem',
 };
 
-// CTA Section styles (using a pinkish-orange gradient)
+// =====================
+// CTA Section: BLUE BACKGROUND + ICON LINKS
+// =====================
 const ctaSectionStyle = {
-  background: 'linear-gradient(135deg, #fa709a, #fee140)',
+  backgroundColor: '#343a40', // match the navbar color
   color: '#fff',
   textAlign: 'center',
   padding: '4rem 1rem',
@@ -254,6 +274,9 @@ const footerStyle = {
 };
 
 function App() {
+  // State to track which section is active
+  const [activeSection, setActiveSection] = useState('home');
+
   // State to toggle contact info in the CTA section
   const [showContact, setShowContact] = useState(false);
 
@@ -263,225 +286,236 @@ function App() {
 
   return (
     <div style={bodyStyle}>
-      {/* Navbar with Home Icon */}
+      {/* Navbar */}
       <nav style={navBarStyle}>
-        <a href="#hero" style={navLinkStyle}>
+        <button onClick={() => setActiveSection('home')} style={navLinkStyle}>
           <FaHome size={20} style={{ marginRight: '0.5rem' }} />
           Home
-        </a>
-        <a href="#about" style={navLinkStyle}>About</a>
-        <a href="#education" style={navLinkStyle}>Education</a>
-        <a href="#skills" style={navLinkStyle}>Skills</a>
-        <a href="#experience" style={navLinkStyle}>Experience</a>
-        <a href="#projects" style={navLinkStyle}>Projects</a>
+        </button>
+        <button onClick={() => setActiveSection('about')} style={navLinkStyle}>
+          About
+        </button>
+        <button onClick={() => setActiveSection('education')} style={navLinkStyle}>
+          Education
+        </button>
+        <button onClick={() => setActiveSection('skills')} style={navLinkStyle}>
+          Skills
+        </button>
+        <button onClick={() => setActiveSection('experience')} style={navLinkStyle}>
+          Experience
+        </button>
+        <button onClick={() => setActiveSection('projects')} style={navLinkStyle}>
+          Projects
+        </button>
       </nav>
 
-      {/* Hero Section */}
-      <section id="hero" style={heroSectionStyle}>
-        <h1 style={heroTitleStyle}>Ike Mathebula</h1>
-        <p style={heroSubtitleStyle}>
-          Dedicated IT Desktop Support Professional &amp; Full Stack Software Engineer
-        </p>
-      </section>
-
-      {/* About Section */}
-      <section id="about" style={sectionContainerStyle}>
-        <div style={aboutSectionStyle}>
-          <img
-            style={aboutImageStyle}
-            src={ikeProfileImg}
-            alt="Ike Mathebula"
-          />
-          <div style={aboutTextStyle}>
-            <h2 style={aboutTitleStyle}>About Me</h2>
-            <p>
-              I am a Desktop Support Technician at African Resonance, a leading provider
-              of payment solutions and transaction processing services in Africa. With
-              over five years of experience in the IT field, I have developed a range of
-              skills and knowledge in technical support, network administration, and
-              computer hardware. I have also earned multiple certifications from
-              Coursera that demonstrate my proficiency and dedication in system
-              administration, technical support fundamentals, and computer networking.
+      {/* When Home is active, display ALL sections */}
+      {activeSection === 'home' && (
+        <>
+          {/* Hero Section */}
+          <section id="hero" style={heroSectionStyle}>
+            <h1 style={heroTitleStyle}>Ike Mathebula</h1>
+            <p style={heroSubtitleStyle}>
+            IT Desktop Support Specialist &amp; Full Stack Software Engineer
             </p>
-            <p>
-              Besides my technical skills, I have a Certificate in Software Engineering
-              from alx_africa, where I learned how to design and build systems using
-              various programming languages and frameworks. I enjoy working on
-              open-source projects and contributing to the software community. My goal
-              is to leverage my skills and experiences to create innovative and
-              impactful solutions in the software engineering domain. I am always eager
-              to learn new technologies and collaborate with other professionals who
-              share my passion and vision.
-            </p>
-            <p>
-              If you need to reach me quickly, feel free to call me at <strong>071 987 2501</strong>.
-            </p>
-          </div>
-        </div>
-      </section>
+          </section>
+        </>
+      )}
 
-      {/* Education & Certifications Section */}
-      <section id="education" style={sectionContainerStyle}>
-        <h2 style={sectionTitleStyle}>Education & Certifications</h2>
-        <ul>
-          <li>
-            Bachelor of Commerce in Information and Technology Management, Mancosa (2024 - Present)
-          </li>
-          <li>
-            Certificate in Software Engineering, ALX Africa (September 2022 – October 2023)
-          </li>
-          <li>
-            National Certificate in IT System Support, Training Force (2024)
-          </li>
-          <li>
-            Google IT Certificates, Coursera (Technical Support Fundamentals, Networking, Operating Systems, System Administration, IT Security)
-          </li>
-          <li>
-            Diploma in Computer Networking & other certifications in Operating Systems and IT support
-          </li>
-        </ul>
-      </section>
+      {/* About Section: Display if Home or About is active */}
+      {(activeSection === 'home' || activeSection === 'about') && (
+        <section id="about" style={sectionContainerStyle}>
+          <div style={aboutSectionStyle}>
+            <img style={aboutImageStyle} src={ikeProfileImg} alt="Ike Mathebula" />
+            <div style={aboutTextStyle}>
+              <h2 style={aboutTitleStyle}>About Me</h2>
+              <p>
+              I’m a passionate IT Desktop Support Specialist and Full Stack Software Engineer currently at African Resonance, a leading provider of payment solutions across Africa. With over 5 years of experience, I specialize in delivering exceptional technical support, effective problem-solving, and efficient system administration.
 
-      {/* Skills Section */}
-      <section id="skills" style={sectionContainerStyle}>
-        <h2 style={sectionTitleStyle}>Technical Skills</h2>
-        <ul>
-          <li>IT Desktop Support &amp; System Administration</li>
-          <li>Full Stack Software Development (Python, JavaScript, HTML/CSS, Java, JavaFX, React.js, Spring Boot)</li>
-          <li>Database Management: MySQL, SQLite, H2</li>
-          <li>Technical Troubleshooting &amp; IT Security</li>
-          <li>Endpoint Management &amp; Network Administration</li>
-        </ul>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" style={sectionContainerStyle}>
-        <h2 style={sectionTitleStyle}>Professional Experience</h2>
-        <ul>
-          <li>
-            IT Desktop Support / System Administrator, African Resonance Business Solutions (March 2017 – Present)
-            <ul>
-              <li>Provided comprehensive technical support for desktops, laptops, and peripherals.</li>
-              <li>Installed, configured, and maintained operating systems and software applications.</li>
-              <li>Managed user accounts, permissions, and implemented robust IT security measures.</li>
-              <li>Led initiatives to streamline IT support processes, achieving a 92% reduction in ticket resolution time.</li>
-              <li>Collaborated with IT teams to plan and execute system upgrades and automation projects.</li>
-              <li>Recognized for outstanding customer service and problem-solving skills.</li>
-            </ul>
-          </li>
-        </ul>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" style={sectionContainerStyle}>
-        <h2 style={sectionTitleStyle}>Projects</h2>
-        <div style={projectCardsContainer}>
-          {/* Card 1: Library Management System */}
-          <div style={projectCardStyle}>
-            <img
-              style={projectImageStyle}
-              src={libraryManagementImg}
-              alt="Library Management System"
-            />
-            <h3 style={projectTitleStyle}>Library Management System</h3>
-            <p>
-              A Java-based desktop application using JavaFX and SQLite/MySQL to manage library resources.
-            </p>
-            <div style={projectButtonContainerStyle}>
-              <a
-                href="https://github.com/ikemathebula/Library-Management-System.git"
-                style={sourceCodeButtonStyle}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                SOURCE CODE
-              </a>
-              <a
-                href="https://drive.google.com/file/d/1kmvWIiEpVsYSnc_qhynpalpY9SCL4ngp/view?usp=sharing"
-                style={liveVersionButtonStyle}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LIVE VERSION
-              </a>
-            </div>
-            <div style={techTagsContainerStyle}>
-              <span style={techTagStyle}>Java</span>
-              <span style={techTagStyle}>JavaFX</span>
-              <span style={techTagStyle}>MySQL</span>
+              </p>
+              <p>
+              Holding a Certificate in Software Engineering from ALX Africa, I'm proficient in various programming languages and frameworks, and I enjoy creating innovative solutions through software development and collaboration.
+              </p>
+              I’m driven, continuously learning, and eager to contribute to projects where I can leverage my skills to make a real impact.
+              <p>
+              Feel free to contact me directly at:
+              📞 +27 71 987 2501 <strong>📧 ikemathebula@gmail.com</strong>.
+              </p>
             </div>
           </div>
+        </section>
+      )}
 
-          {/* Card 2: OfferMe Job Board */}
-          <div style={projectCardStyle}>
-            <img
-              style={projectImageStyle}
-              src={jobSearchImg}
-              alt="OfferMe Job Board"
-            />
-            <h3 style={projectTitleStyle}>OfferMe Job Board</h3>
-            <p>
-              A comprehensive job board application for managing job listings and applications, built with React and Spring Boot.
-            </p>
-            <div style={projectButtonContainerStyle}>
-              <a
-                href="https://github.com/ikemathebula/OfferMe-Job-Board.git"
-                style={sourceCodeButtonStyle}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                SOURCE CODE
-              </a>
-              <a
-                href="https://drive.google.com/file/d/19lNYe10PnWcsWZHcdoMfbVfOIgbwiZ-X/view?usp=sharing"
-                style={liveVersionButtonStyle}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LIVE VERSION
-              </a>
+      {/* Education Section: Display if Home or Education is active */}
+      {(activeSection === 'home' || activeSection === 'education') && (
+        <section id="education" style={sectionContainerStyle}>
+          <h2 style={sectionTitleStyle}>Education & Certifications</h2>
+          <ul>
+            <li>
+              Bachelor of Commerce in Information and Technology Management, Mancosa (2024 - Present)
+            </li>
+            <li>
+              Certificate in Software Engineering, ALX Africa (September 2022 – October 2023)
+            </li>
+            <li>
+              National Certificate in IT System Support, Training Force (2024)
+            </li>
+            <li>
+              Google IT Certificates, Coursera (Technical Support Fundamentals, Networking, Operating Systems, System Administration, IT Security)
+            </li>
+            <li>
+              Diploma in Computer Networking & other certifications...
+            </li>
+          </ul>
+        </section>
+      )}
+
+      {/* Skills Section: Display if Home or Skills is active */}
+      {(activeSection === 'home' || activeSection === 'skills') && (
+        <section id="skills" style={sectionContainerStyle}>
+          <h2 style={sectionTitleStyle}>Technical Skills</h2>
+          <ul>
+            <li>IT Desktop Support &amp; System Administration</li>
+            <li>Full Stack Software Development (Python, JavaScript, HTML/CSS, etc.)</li>
+            <li>Database Management: MySQL, SQLite, H2</li>
+            <li>Technical Troubleshooting &amp; IT Security</li>
+            <li>Endpoint Management &amp; Network Administration</li>
+          </ul>
+        </section>
+      )}
+
+      {/* Experience Section: Display if Home or Experience is active */}
+      {(activeSection === 'home' || activeSection === 'experience') && (
+        <section id="experience" style={sectionContainerStyle}>
+          <h2 style={sectionTitleStyle}>Professional Experience</h2>
+          <ul>
+            <li>
+              IT Desktop Support / System Administrator, African Resonance (March 2017 – Present)
+              <ul>
+                <li>Provided comprehensive technical support for desktops, laptops, and peripherals.</li>
+                <li>Installed, configured, and maintained operating systems and software applications.</li>
+                <li>Managed user accounts, permissions, and implemented robust IT security measures.</li>
+                <li>Led initiatives to streamline IT support processes...</li>
+                <li>Collaborated with IT teams to plan and execute system upgrades...</li>
+                <li>Recognized for outstanding customer service and problem-solving skills.</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+      )}
+
+      {/* Projects Section: Display if Home or Projects is active */}
+      {(activeSection === 'home' || activeSection === 'projects') && (
+        <section id="projects" style={sectionContainerStyle}>
+          <h2 style={sectionTitleStyle}>Projects</h2>
+          <div style={projectCardsContainer}>
+            {/* Card 1: Library Management System */}
+            <div style={projectCardStyle}>
+              <img
+                style={projectImageStyle}
+                src={libraryManagementImg}
+                alt="Library Management System"
+              />
+              <h3 style={projectTitleStyle}>Library Management System</h3>
+              <p>
+                A Java-based desktop application using JavaFX and SQLite/MySQL to manage library resources.
+              </p>
+              <div style={projectButtonContainerStyle}>
+                <a
+                  href="https://github.com/ikemathebula/Library-Management-System.git"
+                  style={sourceCodeButtonStyle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  SOURCE CODE
+                </a>
+                <a
+                  href="https://drive.google.com/file/d/1kmvWIiEpVsYSnc_qhynpalpY9SCL4ngp/view?usp=sharing"
+                  style={liveVersionButtonStyle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LIVE VERSION
+                </a>
+              </div>
+              <div style={techTagsContainerStyle}>
+                <span style={techTagStyle}>Java</span>
+                <span style={techTagStyle}>JavaFX</span>
+                <span style={techTagStyle}>MySQL</span>
+              </div>
             </div>
-            <div style={techTagsContainerStyle}>
-              <span style={techTagStyle}>React</span>
-              <span style={techTagStyle}>Spring Boot</span>
-              <span style={techTagStyle}>MySQL</span>
+
+            {/* Card 2: OfferMe Job Board */}
+            <div style={projectCardStyle}>
+              <img
+                style={projectImageStyle}
+                src={jobSearchImg}
+                alt="OfferMe Job Board"
+              />
+              <h3 style={projectTitleStyle}>OfferMe Job Board</h3>
+              <p>
+                A comprehensive job board application for managing job listings, built with React and Spring Boot.
+              </p>
+              <div style={projectButtonContainerStyle}>
+                <a
+                  href="https://github.com/ikemathebula/OfferMe-Job-Board.git"
+                  style={sourceCodeButtonStyle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  SOURCE CODE
+                </a>
+                <a
+                  href="https://drive.google.com/file/d/19lNYe10PnWcsWZHcdoMfbVfOIgbwiZ-X/view?usp=sharing"
+                  style={liveVersionButtonStyle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LIVE VERSION
+                </a>
+              </div>
+              <div style={techTagsContainerStyle}>
+                <span style={techTagStyle}>React</span>
+                <span style={techTagStyle}>Spring Boot</span>
+                <span style={techTagStyle}>MySQL</span>
+              </div>
+            </div>
+
+            {/* Card 3: AirBnB Clone */}
+            <div style={projectCardStyle}>
+              <img
+                style={projectImageStyle}
+                src={airbnbCloneImg}
+                alt="AirBnB Clone"
+              />
+              <h3 style={projectTitleStyle}>AirBnB Clone</h3>
+              <p>
+                A clone of the popular AirBnB platform, built using full-stack technologies (React, Flask, SQL).
+              </p>
+              <div style={projectButtonContainerStyle}>
+                <a
+                  href="https://github.com/ikemathebula/AirBnB_clone.git"
+                  style={sourceCodeButtonStyle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  SOURCE CODE
+                </a>
+                <button type="button" style={liveVersionButtonStyle} disabled>
+                  LIVE VERSION
+                </button>
+              </div>
+              <div style={techTagsContainerStyle}>
+                <span style={techTagStyle}>React</span>
+                <span style={techTagStyle}>Flask</span>
+                <span style={techTagStyle}>SQL</span>
+              </div>
             </div>
           </div>
+        </section>
+      )}
 
-          {/* Card 3: AirBnB Clone */}
-          <div style={projectCardStyle}>
-            <img
-              style={projectImageStyle}
-              src={airbnbCloneImg}
-              alt="AirBnB Clone"
-            />
-            <h3 style={projectTitleStyle}>AirBnB Clone</h3>
-            <p>
-              A clone of the popular AirBnB platform, built using full-stack technologies including React, Flask, and SQL.
-            </p>
-            <div style={projectButtonContainerStyle}>
-              <a
-                href="https://github.com/ikemathebula/AirBnB_clone.git"
-                style={sourceCodeButtonStyle}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                SOURCE CODE
-              </a>
-              <button type="button" style={liveVersionButtonStyle} disabled>
-                LIVE VERSION
-              </button>
-            </div>
-            <div style={techTagsContainerStyle}>
-              <span style={techTagStyle}>React</span>
-              <span style={techTagStyle}>Flask</span>
-              <span style={techTagStyle}>SQL</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
+      {/* Testimonials Section (Always Visible) */}
       <section style={testimonialSectionStyle}>
         <h2>What people say about my work!</h2>
         <div style={testimonialContainerStyle}>
@@ -491,7 +525,7 @@ function App() {
               “Ike Mathebula's work is nothing short of exceptional. As the Director of Dyslexia Foundations Nigeria, I have had the privilege of witnessing his commitment to excellence. His innovative approach to problem-solving and his dedication to creating meaningful impact are truly admirable.”
             </p>
             <p style={authorStyle}>
-              Pastor Ben Aitopa, Director, Dyslexia Foundations, 
+              Pastor Ben Aitopa, Director, Dyslexia Foundations
             </p>
           </div>
           {/* Testimonial 2 */}
@@ -500,7 +534,7 @@ function App() {
               “Working with this talented individual has been an absolute pleasure. His creativity knows no bounds, and his work as a digital creator is truly commendable. I highly recommend him for his exceptional skills and unwavering dedication to excellence.”
             </p>
             <p style={authorStyle}>
-            Software Engineer, Atlanta, GA, USA
+              Software Engineer, Atlanta, GA, USA
             </p>
           </div>
           {/* Testimonial 3 */}
@@ -515,42 +549,56 @@ function App() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section (Always Visible) */}
       <section style={ctaSectionStyle}>
-        <h2 style={ctaTitleStyle}>Interested in Working Together?</h2>
+        <h2 style={ctaTitleStyle}>Let’s Build Something Great!</h2>
         <button style={ctaButtonStyle} onClick={handleGetInTouchClick}>
-          GET IN TOUCH
+        Contact Me
         </button>
+
         {showContact && (
           <div style={ctaContactInfoStyle}>
+            {/* Example: Email link with icon */}
             <p>
               <strong>Email:</strong>{' '}
-              <a href="mailto:ikemathebula@gmail.com" style={{ color: '#fff' }}>
+              <a
+                href="mailto:ikemathebula@gmail.com"
+                style={{ color: '#fff', textDecoration: 'none' }}
+              >
+                <FaEnvelope style={{ marginRight: '0.4rem' }} />
                 ikemathebula@gmail.com
               </a>
             </p>
+
+            {/* LinkedIn link with icon */}
             <p>
               <strong>LinkedIn:</strong>{' '}
               <a
                 href="https://www.linkedin.com/in/ike-mathebula-810268a3"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#fff' }}
+                style={{ color: '#fff', textDecoration: 'none' }}
               >
+                <FaLinkedin style={{ marginRight: '0.4rem' }} />
                 Ike Mathebula
               </a>
             </p>
+
+            {/* GitHub link with icon */}
             <p>
               <strong>GitHub:</strong>{' '}
               <a
                 href="https://github.com/ikemathebula"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#fff' }}
+                style={{ color: '#fff', textDecoration: 'none' }}
               >
+                <FaGithub style={{ marginRight: '0.4rem' }} />
                 github.com/ikemathebula
               </a>
             </p>
+
+            {/* CV link */}
             <p>
               <strong>Download my CV:</strong>{' '}
               <a
@@ -562,11 +610,33 @@ function App() {
                 View/Download
               </a>
             </p>
+
+            {/* YouTube and Blog icons (optional) */}
+            <p style={{ marginTop: '1rem' }}>
+              {/* YouTube icon */}
+              <a
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#fff', marginRight: '1rem' }}
+              >
+                <FaYoutube size={24} />
+              </a>
+              {/* Blog icon */}
+              <a
+                href="https://your-blog-link.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#fff', marginRight: '1rem' }}
+              >
+                <FaBloggerB size={24} />
+              </a>
+            </p>
           </div>
         )}
       </section>
 
-      {/* Footer */}
+      {/* Footer (Always Visible) */}
       <footer style={footerStyle}>
         <p>© {new Date().getFullYear()} Ike Mathebula - All Rights Reserved</p>
       </footer>
