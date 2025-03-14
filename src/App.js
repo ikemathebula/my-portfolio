@@ -522,28 +522,39 @@ function App() {
           {/* Testimonial 1 */}
           <div style={testimonialCardStyle}>
             <p style={quoteStyle}>
-              “Ike Mathebula's work is nothing short of exceptional. As the Director of Dyslexia Foundations Nigeria, I have had the privilege of witnessing his commitment to excellence. His innovative approach to problem-solving and his dedication to creating meaningful impact are truly admirable.”
+              “Ike’s dedication to excellence is unmatched. As a freelance consultant, I’ve 
+    collaborated with him on several software deployments, and he consistently 
+    delivers outstanding results. His approach to problem-solving is both 
+    innovative and meticulous, making him a true asset on any project.”
             </p>
             <p style={authorStyle}>
-              Pastor Ben Aitopa, Director, Dyslexia Foundations
+              Mbongseni Mlangeni-mbongisenismarts@gmail.com, Freelance Consultant, South Africa
             </p>
           </div>
           {/* Testimonial 2 */}
           <div style={testimonialCardStyle}>
             <p style={quoteStyle}>
-              “Working with this talented individual has been an absolute pleasure. His creativity knows no bounds, and his work as a digital creator is truly commendable. I highly recommend him for his exceptional skills and unwavering dedication to excellence.”
+              "Collaborating with Ike from across the globe has been a seamless experience. 
+    We first connected through the ALX program, and I’ve been consistently impressed 
+    by his clear communication, dedication, and technical acumen. No matter the 
+    time zone difference, Ike always shows up prepared, bringing fresh ideas to 
+    the table and exceeding expectations.”
             </p>
             <p style={authorStyle}>
-              Software Engineer, Atlanta, GA, USA
+              John Offem Software Engineer-ofemjohn@gmail.com, Atlanta, GA, USA
             </p>
           </div>
           {/* Testimonial 3 */}
           <div style={testimonialCardStyle}>
             <p style={quoteStyle}>
-              “I am thoroughly impressed with the technical prowess and problem-solving abilities demonstrated by this remarkable software engineer. His ability to navigate complex challenges and deliver innovative solutions is truly commendable.”
+              “Ike has been an incredible mentor since I joined the IT team. His patience, 
+    knowledge, and genuine desire to help me succeed have accelerated my learning 
+    curve. From hands-on guidance to encouraging my growth in new technologies, 
+    Ike’s leadership style inspires confidence and fosters a supportive environment 
+    for the entire team.”
             </p>
             <p style={authorStyle}>
-              Lungile H, IT Technician, South Africa
+              Lungile Hlatshwayo, Junior IT Specialist, South Africa
             </p>
           </div>
         </div>
@@ -615,7 +626,7 @@ function App() {
             <p style={{ marginTop: '1rem' }}>
               {/* YouTube icon */}
               <a
-                href="https://www.youtube.com/"
+                href="http://www.youtube.com/@SADevGuru"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: '#fff', marginRight: '1rem' }}
